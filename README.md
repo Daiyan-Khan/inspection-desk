@@ -12,6 +12,8 @@ license: mit
 
 # Inspection Desk
 
+[Live demo](https://huggingface.co/spaces/Daibolical/inspection-desk) · [Source repository](https://github.com/Daiyan-Khan/inspection-desk) · [Case study](docs/case-study.md)
+
 A browser-based inspection assistant with local review history. Review real manufacturing photos, compare pretrained visual features with classical computer vision, and record **defect**, **acceptable variation** or **uncertain** decisions.
 
 The project asks a measurable question: do frozen DINOv2 features outperform a classical appearance comparator on the same public candle-inspection benchmark? The answer comes from the generated evaluation report, not from the application design.
@@ -69,7 +71,7 @@ The reproducible tests cover cancellation, stale worker messages, timeouts, CSV 
 
 ## Deployment
 
-The target is a free public Hugging Face Static Space. Build locally, prepare the static upload with `npm run package:space`, and upload the contents of `.publish/space/`. This package contains the built site, model, reference banks, canonical samples, evaluation and licence notices. It requires no secret or paid hardware. See [deployment instructions](docs/deployment.md).
+The public demo is hosted in a free [Hugging Face Static Space](https://huggingface.co/spaces/Daibolical/inspection-desk). Build locally, prepare updates with `npm run package:space`, and upload the contents of `.publish/space/`. This package contains the built site, model, reference banks, canonical samples, evaluation and licence notices. It requires no secret or paid hardware. See [deployment instructions and the immutable release snapshot](docs/deployment.md).
 
 The GitHub repository contains application code, reproducible preparation/evaluation, frozen public reports and curated samples. Raw data, dependency folders and local caches are ignored. The prior product-discovery research is not included in the public application repository.
 
