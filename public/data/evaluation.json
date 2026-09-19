@@ -1,0 +1,2933 @@
+{
+  "schemaVersion": 1,
+  "status": "complete",
+  "artifactVersion": "candle-q8-wasm-v1-2d23b31d872d",
+  "splitVersion": "76ba77ca4fc527ded4d15b7c5be92448afbcdade03643a2ebebce11d33410e35",
+  "evaluatedAt": "2026-09-19T14:20:40.195910+00:00",
+  "counts": {
+    "fit": 719,
+    "calibration": 180,
+    "testNormal": 100,
+    "testAnomaly": 100
+  },
+  "calibrationTarget": 0.05,
+  "methods": [
+    {
+      "method": "dinov2",
+      "label": "Frozen DINOv2",
+      "threshold": 0.6731410601683052,
+      "truePositives": 50,
+      "falseNegatives": 50,
+      "falsePositives": 7,
+      "trueNegatives": 93,
+      "recall": {
+        "value": 0.5,
+        "low": 0.4038315303659956,
+        "high": 0.5961684696340044
+      },
+      "falseAlarmRate": {
+        "value": 0.07,
+        "low": 0.03431926106727268,
+        "high": 0.137495147390735
+      },
+      "averagePrecision": 0.8710211736387147,
+      "pixelAveragePrecision": 0.11485869866262752,
+      "medianLatencyMs": 690.5040500000468,
+      "p95LatencyMs": 800.5369000000646
+    },
+    {
+      "method": "classical",
+      "label": "Colour + gradient baseline",
+      "threshold": 2.7027266739395075,
+      "truePositives": 0,
+      "falseNegatives": 100,
+      "falsePositives": 2,
+      "trueNegatives": 98,
+      "recall": {
+        "value": 0.0,
+        "low": 3.469446951953614e-18,
+        "high": 0.03699349820698568
+      },
+      "falseAlarmRate": {
+        "value": 0.02,
+        "low": 0.00550196755016235,
+        "high": 0.07001179072854388
+      },
+      "averagePrecision": 0.49275304536049874,
+      "pixelAveragePrecision": 0.004352223119555806,
+      "medianLatencyMs": 33.32459999999264,
+      "p95LatencyMs": 44.10606000003751
+    },
+    {
+      "method": "pixel",
+      "label": "Raw-pixel baseline",
+      "threshold": 4.238557789901947,
+      "truePositives": 4,
+      "falseNegatives": 96,
+      "falsePositives": 6,
+      "trueNegatives": 94,
+      "recall": {
+        "value": 0.04,
+        "low": 0.01566330399154762,
+        "high": 0.0983707143588792
+      },
+      "falseAlarmRate": {
+        "value": 0.06,
+        "low": 0.027786123963188192,
+        "high": 0.1247681544589592
+      },
+      "averagePrecision": 0.5102902628579625,
+      "pixelAveragePrecision": 0.006863824787658005,
+      "medianLatencyMs": 377.70864999998594,
+      "p95LatencyMs": 436.7971949999859
+    }
+  ],
+  "pairedRecallDifference": {
+    "value": 0.5,
+    "low": 0.4,
+    "high": 0.6
+  },
+  "acceptanceCriteria": {
+    "meaningfulRecallGain": 0.1,
+    "observedRecallGain": 0.5,
+    "meaningfulRecallGainMet": true,
+    "currentObservedFPRNoGreater": false,
+    "combinedCriterionMet": false,
+    "comparison": "DINOv2 versus classical at the already frozen, independently calibrated thresholds; reporting only, no threshold retuning."
+  },
+  "pairedFalseAlarmDifference": {
+    "value": 0.05,
+    "low": -0.01,
+    "high": 0.11
+  },
+  "pairedAveragePrecisionDifference": {
+    "value": 0.37826812827821593,
+    "low": 0.27895637325531364,
+    "high": 0.45302196310078596
+  },
+  "bootstrap": {
+    "pairedRateRepetitions": 5000,
+    "pairedStratifiedAPRepetitions": 2000,
+    "seed": 42
+  },
+  "conclusion": "DINOv2 has higher observed defect recall than the classical baseline at independently calibrated thresholds; assess the actual false-alarm rates alongside this difference. This is a measured tradeoff: DINOv2 flagged 7 of 100 normal images versus 2 for the classical baseline, and still missed 50 of 100 anomalies. The combined recall-gain/no-extra-false-alarms criterion is not met. This is not evidence of a factory win. Review assistance only.",
+  "limitations": [
+    "One benchmark category and 100 anomalies; factory accuracy and defect prevalence are unknown.",
+    "Intervals describe image sampling uncertainty, not new-factory or new-camera performance.",
+    "One visually confirmed near-duplicate training photo was excluded before inference, leaving 719 fitting images; all 200 official test images remain. No batch identities are supplied, so screening cannot prove complete sample independence.",
+    "Foundation-model pretraining overlap is unknown.",
+    "Thresholds target 5% calibration false alarms; test false alarms can differ.",
+    "Pixel AP uses raw 16x16 patch scores expanded to 224 pixels, excluding padded patches; it is not native-resolution segmentation.",
+    "Latency is offline CPU feature extraction and scoring; image decoding, first model load and browser execution are excluded. Browser timing must be measured separately.",
+    "Review assistance only. An anomaly score is not a defect probability or a release decision."
+  ],
+  "environment": "ONNX Runtime Web 1.22.0 WASM; threads=1; win32 x64; 12th Gen Intel(R) Core(TM) i7-12650H; Node v24.12.0",
+  "provenance": {
+    "manifestSha256": "76ba77ca4fc527ded4d15b7c5be92448afbcdade03643a2ebebce11d33410e35",
+    "predictionsSha256": "389bd53e8462a40fe6d0e938b455b40b375be547e88a4f8ee518057706beda1f",
+    "repositoryCommit": "2a692ab575001cbde74d402d897a7286086c6199",
+    "sourceSplitSha256": "a48557e6033318cb90556f706196bc9d247a776a23ea51aecee5a80dd0332995"
+  },
+  "results": [
+    {
+      "sampleId": "sample-f64de8ab917a",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5677449936012875,
+        "classical": 1.5710320852418391,
+        "pixel": 3.0325404730312155
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e5849a065466",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6697155824233725,
+        "classical": 2.0262251613958715,
+        "pixel": 3.4174688178835098
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c0cf89be9106",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.613202783297956,
+        "classical": 1.856342471802653,
+        "pixel": 4.551509338008751
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-64ea32e965a4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7025665629362352,
+        "classical": 1.8987527908086075,
+        "pixel": 3.6407775271894587
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ba412ab50d27",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7269620126663047,
+        "classical": 1.9123199332654846,
+        "pixel": 3.738367218357367
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-fdbb77ef4f7c",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6820548016162015,
+        "classical": 2.15155803784308,
+        "pixel": 4.009342968882896
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e7ef7c357ddd",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6825256733507048,
+        "classical": 1.9042194004027357,
+        "pixel": 3.5876871267888797
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a786c1f3c4bf",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6806460446975781,
+        "classical": 1.9765474746345508,
+        "pixel": 3.267385417647842
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2b143d5fcdb5",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6670890575607508,
+        "classical": 1.9440935976691591,
+        "pixel": 3.604559171331494
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ad824226d186",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7215192915666423,
+        "classical": 2.3668237150010643,
+        "pixel": 4.067039689389344
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-b0c243b030d3",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6530513355399907,
+        "classical": 1.44983055581389,
+        "pixel": 3.208353838019728
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-351649f108dc",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6163675641824513,
+        "classical": 1.6317915429708456,
+        "pixel": 3.0321210252187285
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2df82735b53f",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.614358581228274,
+        "classical": 1.467399557253998,
+        "pixel": 2.9265441764237656
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-283d02d892a1",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.684978342084154,
+        "classical": 1.527719350835564,
+        "pixel": 3.318569197999029
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ade2fcce3b7a",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6443948565818852,
+        "classical": 1.5734999668283571,
+        "pixel": 2.957409893086005
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ad975b8ce12d",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5941981066058707,
+        "classical": 1.7025725305248518,
+        "pixel": 3.0400651608790925
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-43d12fb5621c",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6397203887307054,
+        "classical": 1.6199165444769832,
+        "pixel": 3.0481007026312197
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ab77bc11eaeb",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5584638630218931,
+        "classical": 1.48861251941502,
+        "pixel": 2.419479534163126
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-73e392ef59ad",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5728520054841016,
+        "classical": 1.9014251954902481,
+        "pixel": 2.791872208629281
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a1aa25321b1f",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6250921662199437,
+        "classical": 1.7171260609754548,
+        "pixel": 3.7445105958455374
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-684f6f850ddb",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7439915217810134,
+        "classical": 1.8679835410979233,
+        "pixel": 4.092922359165589
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ce29848de1a0",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6022492305936267,
+        "classical": 1.4571475720249114,
+        "pixel": 2.74557138699369
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-36197603181d",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6748188147196446,
+        "classical": 1.6156391649420148,
+        "pixel": 2.492408602945814
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a84f516954a4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6564218174994169,
+        "classical": 1.5831487828575974,
+        "pixel": 3.0187677255594636
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-979be1c4a9ff",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6373982507676973,
+        "classical": 1.4293317835761492,
+        "pixel": 2.385807859491873
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-1113e539cd8b",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6907283142269358,
+        "classical": 1.6676070905343416,
+        "pixel": 3.0907668925508176
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c67e9decabf1",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6850801570982815,
+        "classical": 1.6345430287005371,
+        "pixel": 3.6107742412397457
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-08312b4afcd4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6551409894730129,
+        "classical": 1.4642723331933434,
+        "pixel": 2.963038835692144
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-047cb547ba6b",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6609707134939672,
+        "classical": 1.6360066084603955,
+        "pixel": 3.5260075148498755
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6321d1230a40",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6404393407871307,
+        "classical": 1.68901434672798,
+        "pixel": 3.174515542299503
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7f14a4f8cc1e",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.8733456156261845,
+        "classical": 2.173341943737539,
+        "pixel": 4.018301498175952
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e7a1156932a8",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5852246183189159,
+        "classical": 1.528643352660729,
+        "pixel": 3.2522973190621975
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3f27cc2556fb",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.621758517825441,
+        "classical": 1.3189619388636409,
+        "pixel": 3.691017354123356
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c004f8487e72",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6165096135736686,
+        "classical": 1.467695200579642,
+        "pixel": 3.0925156711194965
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-8cfe7587a777",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6580014392683544,
+        "classical": 1.8142564763354305,
+        "pixel": 3.5569901289444203
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-0ea9cc9bb648",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6669449645829165,
+        "classical": 1.9308785823675811,
+        "pixel": 3.8441768936720813
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-fe9aa2bbf966",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6461502307489452,
+        "classical": 2.1651437500542956,
+        "pixel": 3.4784553552987
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6edaa6a682e8",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6535120784651935,
+        "classical": 1.5388583027888942,
+        "pixel": 3.3256356160789964
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5ae36e854da0",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6447616383097611,
+        "classical": 1.8834086329757618,
+        "pixel": 4.198107857438731
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5327be5608a0",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6058733340087585,
+        "classical": 1.7555908433030454,
+        "pixel": 4.4747826481711455
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-8c4713d054d3",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7580801708207157,
+        "classical": 2.334127258420531,
+        "pixel": 3.05241896982709
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-66dce98718e4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7316671951819317,
+        "classical": 2.061739246760978,
+        "pixel": 3.703483627457447
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-db7f72081913",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6305184061845299,
+        "classical": 1.9099823011115453,
+        "pixel": 3.4421217500416317
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-70dc1c9cef39",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.662016358063463,
+        "classical": 2.271397296569017,
+        "pixel": 2.257919768538417
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7ce71e8b86d3",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7335804328934027,
+        "classical": 1.8480011369524898,
+        "pixel": 3.4474610496888745
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-1230460c0a5f",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7605322682439919,
+        "classical": 2.6658727624203946,
+        "pixel": 2.9872103081858823
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a3892c21e205",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6264022825642284,
+        "classical": 1.5129753595379467,
+        "pixel": 2.5484871755561067
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7e5652248d1d",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5802714130270662,
+        "classical": 1.9760981014877992,
+        "pixel": 3.522278871928127
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6e45a6c1fdd0",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6775940780196337,
+        "classical": 2.134855651432064,
+        "pixel": 3.0745928554821242
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f899cddaa96d",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6357797904050674,
+        "classical": 2.1762190851978964,
+        "pixel": 3.742868426194717
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-194081568a6c",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6006400991754595,
+        "classical": 1.6854402127897974,
+        "pixel": 3.004787230709081
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-84167bab0f5d",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5762055423601483,
+        "classical": 1.4333526778243955,
+        "pixel": 3.027237105271147
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ffc69c3dc6e6",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6959966612562296,
+        "classical": 1.5253294672853341,
+        "pixel": 2.9852124106369415
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-adf09bacc927",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6975918048552855,
+        "classical": 2.014798145684782,
+        "pixel": 3.6688367601320815
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-979714bad912",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6120736333063528,
+        "classical": 1.5077853721523755,
+        "pixel": 3.1794232431094316
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f8b4f96b7d60",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6574392268630479,
+        "classical": 1.5098522063736168,
+        "pixel": 2.9097388157942943
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-fdb6f2324593",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6657210197535226,
+        "classical": 1.5915520537124455,
+        "pixel": 3.9092303364465018
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-859ca3d9733b",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6705541241950556,
+        "classical": 1.6153310742765057,
+        "pixel": 2.959719270805819
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-50134848aebf",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6557683536452459,
+        "classical": 1.619283625600324,
+        "pixel": 3.091521040509507
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3524f658eff4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.5937137247615197,
+        "classical": 1.5419901879956854,
+        "pixel": 2.8423722129376707
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-eeda8346a781",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6550376285573896,
+        "classical": 1.6541826600335736,
+        "pixel": 3.4811819536358435
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-64bfe547bf0b",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7851758301280333,
+        "classical": 1.597575245635049,
+        "pixel": 3.765836333623562
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f5fcf565fc0c",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.597470961511514,
+        "classical": 1.534703493322506,
+        "pixel": 3.4443230013991353
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2e16fd258b3b",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.923585155958136,
+        "classical": 1.7824881607473326,
+        "pixel": 3.9863407441169207
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ea305ac946c6",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.9181972710614443,
+        "classical": 1.6737532917615674,
+        "pixel": 2.9533063661178955
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2bc32bbac72d",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.8515134484250668,
+        "classical": 2.103288276228538,
+        "pixel": 2.9702739463291876
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e7e63e18ab72",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.710371515400897,
+        "classical": 1.8825940916456863,
+        "pixel": 4.44539049277501
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-e974b5bec2d3",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6999970191558564,
+        "classical": 1.880441735609838,
+        "pixel": 3.2633521926024884
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a8034bcd983f",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.9704472388523009,
+        "classical": 1.901132417551398,
+        "pixel": 3.940371487930895
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e14b81650db2",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6289714077250718,
+        "classical": 1.8834329399316254,
+        "pixel": 3.602230529809038
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a59c192421e4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.8012482331455383,
+        "classical": 2.060895083942608,
+        "pixel": 3.2051966386079846
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6e2d7383d294",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6332566067949595,
+        "classical": 1.5893606682794654,
+        "pixel": 3.7818735040673856
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ba3f538f4f94",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6855974410419167,
+        "classical": 1.881991393753248,
+        "pixel": 3.685608725534533
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-18a924925a54",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.719221886899316,
+        "classical": 1.646865653565983,
+        "pixel": 3.3380745320785374
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e77028c2e7a5",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7956436237803566,
+        "classical": 1.7206827630664612,
+        "pixel": 3.3948194273521564
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-15a2e2cb6bc3",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7602726129565305,
+        "classical": 1.638239799140288,
+        "pixel": 4.126877965588001
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c96b1491a160",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7445329616186347,
+        "classical": 1.6248096802640397,
+        "pixel": 2.966227602205298
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-84b77a7b34c9",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7370142628193408,
+        "classical": 1.6175150156529097,
+        "pixel": 2.885593243522161
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-47afb0854458",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.696497862546513,
+        "classical": 2.2496494381085417,
+        "pixel": 3.5090565763384105
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-fe11169e15d1",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7326720088903408,
+        "classical": 1.7924027199220762,
+        "pixel": 2.574837272122564
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2aeca5baed64",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6310336753667437,
+        "classical": 1.817145619718793,
+        "pixel": 3.6297896573258357
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c0da2ff94f10",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7364467795357938,
+        "classical": 1.8960326525270201,
+        "pixel": 2.9891283076122335
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f3c4bc939584",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6969821058240574,
+        "classical": 1.5521913886364704,
+        "pixel": 3.518096203412692
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6d51a26d2652",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.718889161674781,
+        "classical": 1.703866531305947,
+        "pixel": 3.8807527298405966
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-bd3653509079",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6801092845147656,
+        "classical": 2.2923742882936042,
+        "pixel": 3.546073473184059
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-b7acaf6980c9",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7106462062663247,
+        "classical": 1.4879847462324431,
+        "pixel": 2.9221336199187933
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-0049b58df1d9",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6737250375952709,
+        "classical": 1.552136628132184,
+        "pixel": 2.965345265347375
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-98bf8150d991",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6134154194696441,
+        "classical": 1.9637510139194805,
+        "pixel": 4.3583776934806435
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-bb5f93a0b3c4",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7057979987092396,
+        "classical": 1.5978963308987255,
+        "pixel": 3.4855656887654667
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5a7c810ca12e",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7722628860759007,
+        "classical": 1.7859309952008284,
+        "pixel": 3.7233668323746487
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-65e80a1a428e",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6583876117745229,
+        "classical": 1.4782173320359304,
+        "pixel": 3.5681527994963944
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-8a64d9262e23",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6843348769006712,
+        "classical": 1.5148726971450457,
+        "pixel": 3.860627784042415
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7678a63a606b",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6546232645974526,
+        "classical": 2.1120595326894267,
+        "pixel": 3.7952715339815
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-14a4380159b0",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6810354349016604,
+        "classical": 1.7207874390171802,
+        "pixel": 3.1344903152197716
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a05e84a89254",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.738717416650451,
+        "classical": 1.5369816833722307,
+        "pixel": 3.3850024371754714
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3499e3fe9986",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.6457817968869808,
+        "classical": 1.4986951126951542,
+        "pixel": 3.4863236679517575
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-4ca6b03a6084",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7184344728133576,
+        "classical": 1.5182434499949404,
+        "pixel": 3.3225453839312706
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-d791d9e59e93",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7326731735062708,
+        "classical": 1.571029018834227,
+        "pixel": 3.4095647515662515
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-27f94fcd0f8a",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.7090323072040029,
+        "classical": 1.4433963516680595,
+        "pixel": 3.2784537251058827
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-86c97c60c9cc",
+      "label": "anomaly",
+      "scores": {
+        "dinov2": 0.712822898094584,
+        "classical": 1.8270857303214705,
+        "pixel": 3.1697978678971555
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-8bd21d081deb",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.47465820444846374,
+        "classical": 3.094680246319423,
+        "pixel": 4.240735405218851
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": true,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-9dd16beadfc3",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.616727753470827,
+        "classical": 2.5116873783516733,
+        "pixel": 4.691846647728072
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-c5059e80f84e",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5355940594538812,
+        "classical": 2.6075496422340243,
+        "pixel": 4.508466710473267
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-210c74928958",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6162050171847432,
+        "classical": 1.7712167263156597,
+        "pixel": 4.315090835718512
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-be2324c7ea0d",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5085184461147177,
+        "classical": 1.4113580113813609,
+        "pixel": 2.8490475108471403
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6b3b9c6e387a",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5484588619849392,
+        "classical": 1.42629571326345,
+        "pixel": 3.8073742196980787
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c8c06d6f5cef",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.579087301934363,
+        "classical": 1.3968346842669819,
+        "pixel": 3.813317557583955
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-b24b2cd8875b",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5480094627695633,
+        "classical": 1.4181635120513434,
+        "pixel": 2.744075233654389
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7077f569da33",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5631142343136581,
+        "classical": 1.339620870147948,
+        "pixel": 3.798336445795678
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-68d3b568fe20",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5145225055770797,
+        "classical": 1.5967504407566815,
+        "pixel": 3.9610740192152454
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3a30c4e94c88",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5802255873071712,
+        "classical": 1.4322892134951863,
+        "pixel": 3.583184331847138
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a7d22de5ed2e",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.4717640010254711,
+        "classical": 1.345008716383863,
+        "pixel": 2.951603725026517
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-56d95e0058fa",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5010956834453706,
+        "classical": 1.7574134202666318,
+        "pixel": 3.5210645759190413
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c0f12a9992de",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6101960424743951,
+        "classical": 1.3470864567397314,
+        "pixel": 3.5686386403748207
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-9fddb366b0de",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5178622042235423,
+        "classical": 1.2667634136284067,
+        "pixel": 3.2114318629066316
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-81602a6d4607",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.4852841793260831,
+        "classical": 1.2738025391775025,
+        "pixel": 2.880344839032341
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f21bde70cbe5",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.627487136376085,
+        "classical": 1.3144874275267875,
+        "pixel": 3.759230428180011
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-06b6574a68e7",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5692130563963399,
+        "classical": 1.8137196103967121,
+        "pixel": 3.1193547442646112
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-79fdf987c3f9",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6263059078699714,
+        "classical": 1.552960553780538,
+        "pixel": 3.3769193349373885
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7ea476ecac29",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5343021647587259,
+        "classical": 1.5415278289132566,
+        "pixel": 3.4327533352198243
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f7512b455cb1",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5466559882035439,
+        "classical": 1.6202245937004833,
+        "pixel": 3.523778127673288
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-9fdbff967d9c",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5300999839424779,
+        "classical": 1.5399762558425958,
+        "pixel": 3.3452870709968225
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-b3b61ff6b3d9",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5052370344046393,
+        "classical": 1.9888041481425667,
+        "pixel": 3.201465527005541
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-fdcc1019670a",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.502505468735574,
+        "classical": 2.1262829361586406,
+        "pixel": 2.5474696538603636
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f15cd0924814",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5604195331978572,
+        "classical": 2.0681693436163555,
+        "pixel": 4.032924570642512
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e7575b698500",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5856331639991778,
+        "classical": 1.2707258363577074,
+        "pixel": 3.1710261795168755
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-0794c52e1f29",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.7779525077660933,
+        "classical": 1.4626138012996606,
+        "pixel": 2.930872219928171
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7fae59244e67",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5187040752431629,
+        "classical": 1.5286186484498152,
+        "pixel": 3.0632099796648604
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-63d839171934",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6190373753891195,
+        "classical": 1.5188554177503621,
+        "pixel": 3.522606338339082
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-fccc4e1a06bc",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5423109033289986,
+        "classical": 1.4709332638412573,
+        "pixel": 3.674112992327273
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-0789ce8610ef",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5184972613885651,
+        "classical": 1.5058732464380398,
+        "pixel": 3.5202362273807486
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-67cf909cc1b1",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5860667005716753,
+        "classical": 1.4847998172317947,
+        "pixel": 3.53355822524329
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-95263c3fe1f4",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5660183929623803,
+        "classical": 1.4622649662286413,
+        "pixel": 2.6953993253945345
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-1631046419bb",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.572794662302298,
+        "classical": 1.3497169510666776,
+        "pixel": 3.195713546007616
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c15f2ef7ddeb",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5137824670903657,
+        "classical": 1.2199666601373056,
+        "pixel": 2.695648714235651
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ee30a351b7e4",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5715794655364309,
+        "classical": 1.5160276631941911,
+        "pixel": 2.8914796425201112
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-892685eef2a3",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6827263437080016,
+        "classical": 1.5397894914081693,
+        "pixel": 2.7387854526768662
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-d39d7c3703a1",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5406421017487526,
+        "classical": 1.6104176556245746,
+        "pixel": 3.494710350776203
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-da220447b04a",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5373476979359714,
+        "classical": 1.5596989245928472,
+        "pixel": 2.685405130253649
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-f22ed496019a",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.598656882019869,
+        "classical": 1.588892841211659,
+        "pixel": 3.214874836104707
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a6b052468dbb",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6683348894623127,
+        "classical": 1.6274228404838351,
+        "pixel": 2.822113376612476
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6548e5265ab1",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.530564782531478,
+        "classical": 1.4193263772102764,
+        "pixel": 2.68999012537381
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-389726fcf5d1",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.7196241257531497,
+        "classical": 1.6494825975039884,
+        "pixel": 2.9733628696186214
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-27de8ea8dc51",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6026721575192633,
+        "classical": 1.3940240431147042,
+        "pixel": 2.807697753036676
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-9cae4ed396c5",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5696381275170332,
+        "classical": 1.3725349172752084,
+        "pixel": 2.791430244903156
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-bc96c902e889",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.7163209071850101,
+        "classical": 1.4626170519619108,
+        "pixel": 3.148491758694869
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a92c69d19b82",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5923322823640345,
+        "classical": 2.137350816942083,
+        "pixel": 3.504357493188696
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3b549b13fd14",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6075718065345048,
+        "classical": 3.5682493898789196,
+        "pixel": 3.580171298822615
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": true,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-82fa44020a7a",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6804718364378632,
+        "classical": 1.6426991809243519,
+        "pixel": 3.4381725090118898
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-89cabdba11a5",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6133788918235062,
+        "classical": 2.083680056595841,
+        "pixel": 2.760639896547743
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-26cbaf9a114d",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5736493408925829,
+        "classical": 1.4120741922286728,
+        "pixel": 3.8944913492391335
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-42fdf5b7c5fe",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6130649777003345,
+        "classical": 2.2414606601111915,
+        "pixel": 3.533717545857834
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-cfa7b5ae4789",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6253117679497996,
+        "classical": 2.1507626503795043,
+        "pixel": 3.024935047240417
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-1c8b72d65dd8",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.49609033624939114,
+        "classical": 1.8357693304487186,
+        "pixel": 2.9523453354244857
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-25a4adb61ff0",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5242729502431265,
+        "classical": 2.0121162316542636,
+        "pixel": 3.6571971695956385
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c970a5c0161b",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5538127332825018,
+        "classical": 2.590707186636879,
+        "pixel": 3.3723685734992648
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a872c14cf616",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5216661699434462,
+        "classical": 1.9600350646470843,
+        "pixel": 3.7225608871111278
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e134f08803b7",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5748739319823292,
+        "classical": 2.08755533684472,
+        "pixel": 3.8337886002114585
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-dcb84773a065",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6260402137607809,
+        "classical": 2.093462340991154,
+        "pixel": 4.348675758709426
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-91b1c96e16b5",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5164153688233104,
+        "classical": 2.3615654489842113,
+        "pixel": 3.389665180919168
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-460f8df667fb",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5272007924895448,
+        "classical": 2.2016172964683216,
+        "pixel": 3.693753232727512
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ef93284dabf3",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5309915282520129,
+        "classical": 2.544035885980933,
+        "pixel": 2.9256969297436006
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2393baa1b863",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.47101257283773734,
+        "classical": 2.529837869333371,
+        "pixel": 3.536000636877855
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-9ad0b256bf29",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5350226790415612,
+        "classical": 2.34656097568393,
+        "pixel": 3.364846796286597
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-2e593841407d",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5193481862451138,
+        "classical": 2.0435891675609668,
+        "pixel": 2.864532362930782
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-99ae2fbfced3",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.570990745879841,
+        "classical": 2.2733728807863285,
+        "pixel": 3.4413374621520005
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-8b67c6541054",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6096626217466874,
+        "classical": 2.3169989466593557,
+        "pixel": 3.75216211162926
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-1053f2828604",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5562570091662283,
+        "classical": 2.2159372793808143,
+        "pixel": 3.2378925969521646
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-ef92a09a250e",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6037518099245259,
+        "classical": 1.6838582447017885,
+        "pixel": 3.5865507306734488
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-6a17e98a97b4",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6230759433793651,
+        "classical": 1.719908032036436,
+        "pixel": 3.343253510354578
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-a146779be1df",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5347094441832323,
+        "classical": 1.8804796472263827,
+        "pixel": 2.6281155699594883
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-9101373bb4ec",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5787855642503449,
+        "classical": 1.8597350628217733,
+        "pixel": 3.1825491085059463
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-12c9a461d7dd",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5723898004362167,
+        "classical": 1.764189192221308,
+        "pixel": 4.0879652260078885
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-109eadee554e",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5774243460537095,
+        "classical": 1.3598123616394528,
+        "pixel": 3.054923549659342
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5a4d89b28341",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.482328380511733,
+        "classical": 1.6874905110646128,
+        "pixel": 3.3769915126376753
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-195ffb5cdd7b",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.613970733491369,
+        "classical": 1.788618509144909,
+        "pixel": 4.122827463041785
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5fe2477449d6",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.537358479272789,
+        "classical": 1.7726262675524171,
+        "pixel": 2.629085190066565
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-0b73bda30df5",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.56806898927314,
+        "classical": 1.5936686600216134,
+        "pixel": 3.2239818104958315
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-09442ba1dfd1",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5106605567122057,
+        "classical": 2.0183797293263286,
+        "pixel": 3.173277162044479
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-b7f3ddd9701f",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5465526038812251,
+        "classical": 1.698804573878979,
+        "pixel": 3.7802964462910844
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5b3f31828477",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6091946723622844,
+        "classical": 2.0630106435854665,
+        "pixel": 4.633669979760903
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": true
+      }
+    },
+    {
+      "sampleId": "sample-3c3a451a59e3",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5564862507628161,
+        "classical": 1.5990590360606898,
+        "pixel": 3.44405479239249
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-c7c3b36006d9",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.597795326329164,
+        "classical": 1.4937988885809095,
+        "pixel": 3.3494065414116534
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3aaad73007bf",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.775190384236385,
+        "classical": 1.7670880853249105,
+        "pixel": 3.900829532939138
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-515eacadc437",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5189816634609848,
+        "classical": 1.5707127532661596,
+        "pixel": 3.632660152584767
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3662a0cc4016",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5134099242755925,
+        "classical": 1.4385422387189166,
+        "pixel": 3.5807053287838095
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-5eb37c1fdc18",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.557481490977431,
+        "classical": 1.7051203890189135,
+        "pixel": 3.4544104140879113
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-622585542f41",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6195524038945172,
+        "classical": 1.847609981564784,
+        "pixel": 3.700654940940651
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-140138f6653f",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5342327856587495,
+        "classical": 1.340022833885628,
+        "pixel": 3.1433522300528636
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-60e2396c6e24",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5733460514196113,
+        "classical": 1.7286330962306689,
+        "pixel": 3.481430689646757
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-353fbf955a19",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6426835458104084,
+        "classical": 1.5966985747051587,
+        "pixel": 3.3723965534332407
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-7e7cb885f946",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5779814215311712,
+        "classical": 1.4544111077212882,
+        "pixel": 2.7848862597591846
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-81e3437b81b0",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5114731276922293,
+        "classical": 1.5373594155794792,
+        "pixel": 2.56708306528505
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3f4b7f678b34",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5441980977700764,
+        "classical": 1.4742587571217656,
+        "pixel": 3.0842916048558875
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-34c006fb0722",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6065941047496647,
+        "classical": 1.451320965438427,
+        "pixel": 3.4655924577616224
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-3d7e01d9cf77",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6286063609432742,
+        "classical": 1.8656356551972113,
+        "pixel": 3.239748232247416
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-184d2ce98ca4",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5477174618651726,
+        "classical": 1.4996137535317549,
+        "pixel": 2.7507954083757458
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-cf2e03668139",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.5401450074040033,
+        "classical": 2.223541166664,
+        "pixel": 3.4879091330906298
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-e2b89af6de94",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6350631708029487,
+        "classical": 2.0913777291700777,
+        "pixel": 3.3910238102790813
+      },
+      "flagged": {
+        "dinov2": false,
+        "classical": false,
+        "pixel": false
+      }
+    },
+    {
+      "sampleId": "sample-03049fbaeb6f",
+      "label": "normal",
+      "scores": {
+        "dinov2": 0.6741663630510751,
+        "classical": 2.529389861584431,
+        "pixel": 3.6522151261320723
+      },
+      "flagged": {
+        "dinov2": true,
+        "classical": false,
+        "pixel": false
+      }
+    }
+  ]
+}

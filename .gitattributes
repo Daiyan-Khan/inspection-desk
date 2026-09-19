@@ -1,0 +1,9 @@
+# Artifact checksums must survive Windows and Linux checkouts unchanged.
+* text=auto eol=lf
+*.bin binary
+*.wasm binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webm binary
+*.mp4 binary

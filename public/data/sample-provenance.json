@@ -1,0 +1,78 @@
+{
+  "attribution": "VisA dataset: Yang Zou, Jongheon Jeong, Latha Pemula, Dongqing Zhang, Onkar Dabeer (ECCV 2022). CC BY 4.0.",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "sourceCommit": "2a692ab575001cbde74d402d897a7286086c6199",
+  "modifications": "Original JPEGs copied unchanged. Input PNGs resized and grey-letterboxed to 224x224 by the pinned shared preprocessing kernel.",
+  "samples": [
+    {
+      "sampleId": "sample-0049b58df1d9",
+      "sourcePath": "candle/Data/Images/Anomaly/086.JPG",
+      "originalSha256": "748465937c0833ba911c422f518e86a59f3fbe558a637abbb9970338a7722513"
+    },
+    {
+      "sampleId": "sample-03049fbaeb6f",
+      "sourcePath": "candle/Data/Images/Normal/0996.JPG",
+      "originalSha256": "9b605800c2274d9afeba2d904ee3037d34ab491fcf6fce9845cc398326441b46"
+    },
+    {
+      "sampleId": "sample-047cb547ba6b",
+      "sourcePath": "candle/Data/Images/Anomaly/028.JPG",
+      "originalSha256": "f42cb90134eb0a2a36f37bd96c033ceb869a9dbf303f007e253de0c948e69d91"
+    },
+    {
+      "sampleId": "sample-06b6574a68e7",
+      "sourcePath": "candle/Data/Images/Normal/0208.JPG",
+      "originalSha256": "4f18525be21b8ce9af0346edb2a9d5a9acb2f49ae9b4d08a612525a775a10520"
+    },
+    {
+      "sampleId": "sample-0789ce8610ef",
+      "sourcePath": "candle/Data/Images/Normal/0377.JPG",
+      "originalSha256": "c2a54d23ca0475ef34906ea82b0144c0836d92a610d244e44b116dc1ec07c9d4"
+    },
+    {
+      "sampleId": "sample-0794c52e1f29",
+      "sourcePath": "candle/Data/Images/Normal/0306.JPG",
+      "originalSha256": "805361432ea7bbe114946f59d700cdf10b17b4eece67d55528ab50590d147419"
+    },
+    {
+      "sampleId": "sample-08312b4afcd4",
+      "sourcePath": "candle/Data/Images/Anomaly/027.JPG",
+      "originalSha256": "6c48743e09af766c5693ae27c8c4ac07a877cb43fd5f0e63321eba3d10bf762a"
+    },
+    {
+      "sampleId": "sample-09442ba1dfd1",
+      "sourcePath": "candle/Data/Images/Normal/0790.JPG",
+      "originalSha256": "27fa2ec32fec3979c3231ed1d0d6b2e8e7d15232d36fadd472fcbde1c6e2daec"
+    },
+    {
+      "sampleId": "sample-0b73bda30df5",
+      "sourcePath": "candle/Data/Images/Normal/0784.JPG",
+      "originalSha256": "1e1983fd2ce9c43f6434f947a30235e2809f410d2cab8d6b638bbf2201808b1b"
+    },
+    {
+      "sampleId": "sample-0ea9cc9bb648",
+      "sourcePath": "candle/Data/Images/Anomaly/035.JPG",
+      "originalSha256": "e2c7b688764a93f9fd6e9f12744bbb0a4f9669ce15c5494540286619f49f9d68"
+    },
+    {
+      "sampleId": "sample-1113e539cd8b",
+      "sourcePath": "candle/Data/Images/Anomaly/025.JPG",
+      "originalSha256": "4d62f52bc1761af6563837b8f56cceb9c6da45a4eab487c189d86bb70671aee3"
+    },
+    {
+      "sampleId": "sample-1230460c0a5f",
+      "sourcePath": "candle/Data/Images/Anomaly/045.JPG",
+      "originalSha256": "ff5a330c70afcc311f80c21c5ede46f79577d04d589a9993918bd045bbf23a7b"
+    },
+    {
+      "sampleId": "sample-14a4380159b0",
+      "sourcePath": "candle/Data/Images/Anomaly/093.JPG",
+      "originalSha256": "20d6ff5d284eb4a975c53783aed42e4e4906dafba672a895ef6f9410a3042405"
+    },
+    {
+      "sampleId": "sample-15a2e2cb6bc3",
+      "sourcePath": "candle/Data/Images/Anomaly/075.JPG",
+      "originalSha256": "56b47a88e7611dce61fc642342e5dd846e69b40f094516d95458d0430f34e159"
+    }
+  ]
+}

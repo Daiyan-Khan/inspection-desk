@@ -1,0 +1,22 @@
+{
+  "version": "candle-q8-wasm-v1-2d23b31d872d",
+  "kernelHash": "96e773bde593494510a0ad7c8362831c1930113b59fd131aa5be57e66619bee3",
+  "runtime": "onnxruntime-web@1.22.0/wasm/single-thread",
+  "modelSha256": "3afdc8bc63b50558d6e5770f5b799bb82455c2311183a2de43803f343a29d917",
+  "calibrationFrozenAt": "2026-09-19T14:11:32.163Z",
+  "input": "Sharp Lanczos3 aspect-ratio preserving 224px letterbox; fixed RGB(127,127,127) padding; canonical PNGs shared verbatim with browser. ImageNet channel normalisation.",
+  "patchEligibility": "Only 14×14 patches entirely contained within the resized image; all other patch scores displayed as zero and excluded from scoring/evaluation.",
+  "dinov2": "Frozen q8 DINOv2-small last_hidden_state; discard CLS; per-patch L2 normalisation; no model training. Both offline Node and browser use ONNX Runtime Web1.22.0 WASM, one thread.",
+  "classical": "Lab mean/std and L-channel central-difference gradient magnitude mean/std, over 14/28/42px clipped windows (24 features); fit-bank per-feature z-score with std floor0.001.",
+  "pixel": "Raw 14×14×3 RGB patch scaled to [0,1] (588 features); no feature learning.",
+  "bank": "Same1024fitpatchlocations per method: at least one per fit image, remaining patches by seeded deterministic FNV-1a hash rank. No coreset optimisation.",
+  "scoring": "Exact Euclidean nearest-reference distance per eligible patch; image score mean of five highest patch distances.",
+  "calibration": "180normalonly images; finite-sample split-conformal95% upper quantile ceil((n+1)*0.95)-1; strict score>threshold flag.",
+  "heatmapScale": "Fixed per method at calibration-normal eligible patch99.5th percentile; test data never sets thresholds or display scale.",
+  "limits": [
+    "Patch embeddings can attend to padding even though padded patches are excluded.",
+    "Fixed224resolution may discard small defects.",
+    "Reported WASM timings were collected in Node; real browser/device latencies vary.",
+    "Native CPU q8 execution was rejected after fit-only parity checks showed material feature differences; published results use WASM throughout."
+  ]
+}

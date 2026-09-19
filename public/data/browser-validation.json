@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "artifactVersion": "candle-q8-wasm-v1-2d23b31d872d",
+  "measuredAt": "2026-09-19T14:17:34.438Z",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+  "hardwareConcurrency": 16,
+  "tolerance": {
+    "absoluteImageScore": 0.002,
+    "absolutePatchDistance": 0.005
+  },
+  "memory": {},
+  "notes": [
+    "Timing is measured on this browser/device, not a guarantee for other devices.",
+    "Offline and browser both use the pinned ORT WASM provider.",
+    "End-to-end includes resource loading on the first request; warmProcessing excludes loading/decoding.",
+    "JS heap excludes some WASM/native allocations and is not peak process memory."
+  ],
+  "rows": [
+    {
+      "sampleId": "sample-0049b58df1d9",
+      "method": "dinov2",
+      "score": 0.6737250375952709,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 647.5999999940395,
+      "endToEndMs": 1228,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-0049b58df1d9",
+      "method": "classical",
+      "score": 1.552136628132184,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 52.599999994039536,
+      "endToEndMs": 93.7999999821186,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-0049b58df1d9",
+      "method": "pixel",
+      "score": 2.965345265347375,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 331,
+      "endToEndMs": 449.90000000596046,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-03049fbaeb6f",
+      "method": "dinov2",
+      "score": 0.6741663630510751,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 618.9000000059605,
+      "endToEndMs": 640.9000000059605,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-03049fbaeb6f",
+      "method": "classical",
+      "score": 2.529389861584431,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 36,
+      "endToEndMs": 62.19999998807907,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-03049fbaeb6f",
+      "method": "pixel",
+      "score": 3.6522151261320723,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 324.5,
+      "endToEndMs": 333.90000000596046,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-047cb547ba6b",
+      "method": "dinov2",
+      "score": 0.6609707134939672,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 613.5,
+      "endToEndMs": 630.7000000178814,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-047cb547ba6b",
+      "method": "classical",
+      "score": 1.6360066084603955,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 32.79999998211861,
+      "endToEndMs": 52.70000001788139,
+      "passed": true
+    },
+    {
+      "sampleId": "sample-047cb547ba6b",
+      "method": "pixel",
+      "score": 3.5260075148498755,
+      "scoreError": 0,
+      "maxPatchError": 0,
+      "warmProcessingMs": 297.7999999821186,
+      "endToEndMs": 310.40000000596046,
+      "passed": true
+    }
+  ]
+}

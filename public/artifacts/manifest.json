@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "version": "candle-q8-wasm-v1-2d23b31d872d",
+  "splitVersion": "76ba77ca4fc527ded4d15b7c5be92448afbcdade03643a2ebebce11d33410e35",
+  "model": {
+    "id": "Xenova/dinov2-small",
+    "revision": "c2bb04a51fab207c420665f1946016107bffc701",
+    "dtype": "q8",
+    "localPath": "models/dinov2-small-q8.onnx",
+    "sha256": "3afdc8bc63b50558d6e5770f5b799bb82455c2311183a2de43803f343a29d917"
+  },
+  "preprocessing": {
+    "size": 224,
+    "patchSize": 14,
+    "padding": [
+      127,
+      127,
+      127
+    ],
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "methods": {
+    "dinov2": {
+      "bankUrl": "artifacts/dinov2-bank.bin",
+      "bankSha256": "fe2211185c9dca93e0fccc325131452c1815d8500e3cc339668648217998df79",
+      "dimensions": 384,
+      "count": 1024,
+      "threshold": 0.6731410601683052,
+      "heatmapScale": 0.6228641959846609
+    },
+    "classical": {
+      "bankUrl": "artifacts/classical-bank.bin",
+      "bankSha256": "2b262d3e9bd45c6f003a7ec5fbb5f8f4784d95532089cb3c4cb1c7ceaa9020b2",
+      "dimensions": 24,
+      "count": 1024,
+      "threshold": 2.7027266739395075,
+      "heatmapScale": 2.4115239796762924,
+      "standardizationUrl": "artifacts/classical-standardization.json",
+      "standardizationSha256": "f050d9f4b1407dd0c9c8ee7e174e8822390b6de2a4a1ed71eff0450dafc88840"
+    },
+    "pixel": {
+      "bankUrl": "artifacts/pixel-bank.bin",
+      "bankSha256": "c8f2504cb5a4e910dcabb67aeb58c5fd981348e2c522cf817ee52b0815bd4e85",
+      "dimensions": 588,
+      "count": 1024,
+      "threshold": 4.238557789901947,
+      "heatmapScale": 3.8054111097419736
+    }
+  },
+  "createdAt": "2026-09-19T14:15:19.546Z"
+}

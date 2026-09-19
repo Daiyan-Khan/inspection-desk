@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "dataset": "VisA candle",
+  "sourceUrl": "https://github.com/amazon-science/spot-diff",
+  "license": "CC-BY-4.0",
+  "splitVersion": "76ba77ca4fc527ded4d15b7c5be92448afbcdade03643a2ebebce11d33410e35",
+  "samples": [
+    {
+      "id": "sample-0049b58df1d9",
+      "name": "Inspection photo 01",
+      "imageUrl": "/samples/sample-0049b58df1d9.jpg",
+      "inputUrl": "/samples/sample-0049b58df1d9-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter",
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-03049fbaeb6f",
+      "name": "Inspection photo 02",
+      "imageUrl": "/samples/sample-03049fbaeb6f.jpg",
+      "inputUrl": "/samples/sample-03049fbaeb6f-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter",
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-047cb547ba6b",
+      "name": "Inspection photo 03",
+      "imageUrl": "/samples/sample-047cb547ba6b.jpg",
+      "inputUrl": "/samples/sample-047cb547ba6b-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter",
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-06b6574a68e7",
+      "name": "Inspection photo 04",
+      "imageUrl": "/samples/sample-06b6574a68e7.jpg",
+      "inputUrl": "/samples/sample-06b6574a68e7-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-0789ce8610ef",
+      "name": "Inspection photo 05",
+      "imageUrl": "/samples/sample-0789ce8610ef.jpg",
+      "inputUrl": "/samples/sample-0789ce8610ef-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-0794c52e1f29",
+      "name": "Inspection photo 06",
+      "imageUrl": "/samples/sample-0794c52e1f29.jpg",
+      "inputUrl": "/samples/sample-0794c52e1f29-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter",
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-08312b4afcd4",
+      "name": "Inspection photo 07",
+      "imageUrl": "/samples/sample-08312b4afcd4.jpg",
+      "inputUrl": "/samples/sample-08312b4afcd4-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter",
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-09442ba1dfd1",
+      "name": "Inspection photo 08",
+      "imageUrl": "/samples/sample-09442ba1dfd1.jpg",
+      "inputUrl": "/samples/sample-09442ba1dfd1-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-0b73bda30df5",
+      "name": "Inspection photo 09",
+      "imageUrl": "/samples/sample-0b73bda30df5.jpg",
+      "inputUrl": "/samples/sample-0b73bda30df5-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-0ea9cc9bb648",
+      "name": "Inspection photo 10",
+      "imageUrl": "/samples/sample-0ea9cc9bb648.jpg",
+      "inputUrl": "/samples/sample-0ea9cc9bb648-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "starter",
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-1113e539cd8b",
+      "name": "Inspection photo 11",
+      "imageUrl": "/samples/sample-1113e539cd8b.jpg",
+      "inputUrl": "/samples/sample-1113e539cd8b-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-1230460c0a5f",
+      "name": "Inspection photo 12",
+      "imageUrl": "/samples/sample-1230460c0a5f.jpg",
+      "inputUrl": "/samples/sample-1230460c0a5f-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-14a4380159b0",
+      "name": "Inspection photo 13",
+      "imageUrl": "/samples/sample-14a4380159b0.jpg",
+      "inputUrl": "/samples/sample-14a4380159b0-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    },
+    {
+      "id": "sample-15a2e2cb6bc3",
+      "name": "Inspection photo 14",
+      "imageUrl": "/samples/sample-15a2e2cb6bc3.jpg",
+      "inputUrl": "/samples/sample-15a2e2cb6bc3-input.png",
+      "sourcePath": "VisA candle image; provenance in the separate evaluation record",
+      "width": 1284,
+      "height": 1168,
+      "collections": [
+        "findings"
+      ],
+      "transform": {
+        "originalWidth": 1284,
+        "originalHeight": 1168,
+        "resizedWidth": 224,
+        "resizedHeight": 204,
+        "padLeft": 0,
+        "padTop": 10,
+        "inputSize": 224
+      }
+    }
+  ]
+}

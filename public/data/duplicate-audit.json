@@ -1,0 +1,21 @@
+{
+  "auditedExclusions": [
+    {
+      "calibrationReplacement": "candle/Data/Images/Normal/0000.JPG",
+      "grayscale64MaxDifference": 6.0,
+      "grayscale64Rmse": 1.1784192323684692,
+      "image": "candle/Data/Images/Normal/0470.JPG",
+      "reason": "Pre-inference visual audit confirmed essentially identical four-candle scene, marks and framing; conservative removal prevents this near-duplicate training image entering calibration or reference bank.",
+      "relatedOfficialTestImage": "candle/Data/Images/Normal/0469.JPG",
+      "replacementRule": "Lexicographically first original fitting image; no model scores were used.",
+      "sha256": "41a8664bd839c796141bb153cfb4eaa56ac9965bb4df7862cf38d96dc58b905c"
+    }
+  ],
+  "coarseDhashCandidates": 290536,
+  "crossSplitExactDuplicateGroups": [],
+  "crossSplitPerceptualCandidates": [],
+  "decodedPixelDuplicateGroups": [],
+  "encodedDuplicateGroups": [],
+  "limitations": "No manufacturing batch identities are provided. Perceptual screening cannot certify sample independence. Foundation-model pretraining overlap is unknown.",
+  "perceptualScreen": "64-bit grayscale dHash Hamming <= 2, confirmed by 64x64 grayscale RMSE <= 2 and maximum pixel difference <= 12 on a 0-255 scale. Fixed thresholds are a conservative screening heuristic, not proof of independence."
+}
