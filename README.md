@@ -14,30 +14,44 @@ license: mit
 
 [Live demo](https://huggingface.co/spaces/Daibolical/inspection-desk) · [Source repository](https://github.com/Daiyan-Khan/inspection-desk) · [Case study](docs/case-study.md)
 
+**[Watch the two-minute walkthrough](https://daibolical-inspection-desk.static.hf.space/walkthrough.html)** · [Validation evidence](docs/validation.md)
+
+![Inspection Desk showing the real candle review workspace](docs/images/workspace.png)
+
 A browser-based inspection assistant with local review history. Review real manufacturing photos, compare pretrained visual features with classical computer vision, and record **defect**, **acceptable variation** or **uncertain** decisions.
 
 The project asks a measurable question: do frozen DINOv2 features outperform a classical appearance comparator on the same public candle-inspection benchmark? The answer comes from the generated evaluation report, not from the application design.
 
-## Run the app
+## Try the frozen experiment
 
-Requires Node.js 22 or 24 and Python 3.12 for data/evaluation. No paid API or inference server is used.
+Requires Node.js 22 or 24. No paid API or inference server is used.
 
 The repository's npm configuration skips optional native CUDA downloads. The application and benchmark use WASM; no GPU installation is required.
 
 ```sh
 npm ci
+node scripts/fetch_model.mjs
+npm run dev
+```
+
+The helper downloads the pinned 24.5 MB model from the immutable public release and verifies its SHA-256. Reference banks, curated samples and the evaluation report are already included in the repository, so trying the app does not require rerunning the benchmark. Model weights stay in the ignored `public/models/` directory.
+
+Open the URL printed by Vite. Start with the ten-image collection, run analysis, adjust the anomaly overlay, record decisions and export JSON or CSV. Keys **1/2/3** choose a disposition; **J/K** or the arrow keys move between images when an input is not focused.
+
+## Reproduce the experiment
+
+To regenerate the frozen data, artifacts and evaluation, also install Python 3.12. After installing the Node dependencies above:
+
+```sh
 python -m venv .venv
 # Activate .venv for your shell, then:
 python -m pip install -r requirements.txt
 python scripts/prepare_data.py
 npm run artifacts
 python scripts/evaluate.py
-npm run dev
 ```
 
-Preparation downloads only the required members of the original VisA archive, checks source integrity, and preserves originals under ignored `data/`. The initial setup needs network access. Generated model weights are deliberately not stored in Git; the artifact builder downloads the pinned version and verifies its SHA-256.
-
-Open the URL printed by Vite. Start with the ten-image collection, run analysis, adjust the anomaly overlay, record decisions and export JSON or CSV. Keys **1/2/3** choose a disposition; **J/K** or the arrow keys move between images when an input is not focused.
+Preparation downloads only the required members of the original VisA archive, checks source integrity, and preserves originals under ignored `data/`. Reproduction needs network access and processes the complete fitting, calibration and test partitions. Generated model weights are deliberately not stored in Git; the artifact builder verifies the pinned version's SHA-256.
 
 ## What is implemented
 
@@ -67,7 +81,7 @@ npm run build
 
 For actual browser/offline WASM parity and browser timing, run the dev server and open `/validation.html`. Click **Run browser parity and timing checks**. It uses three frozen public samples across all three methods, accepts at most 0.002 absolute image-score error and 0.005 patch-distance error, and reports actual processing times. These are numerical agreement tolerances, not accuracy thresholds.
 
-The reproducible tests cover cancellation, stale worker messages, timeouts, CSV safety, feature/scoring contracts, artifact integrity and data/metric invariants. Manual browser verification covers the actual review flow and persistence.
+The reproducible tests cover cancellation, stale worker messages, mocked timeouts, CSV safety, feature/scoring contracts, artifact integrity and data/metric invariants. Additional API tests inject IndexedDB, quota, cache and network failures. The current suites contain 37 TypeScript tests and 16 Python tests; CI also runs the production build. It does not rerun the full image benchmark or browser acceptance flow. Hosted review, persistence, exports and cancellation were checked separately. See the [validation record and remaining gaps](docs/validation.md).
 
 ## Deployment
 
@@ -79,6 +93,7 @@ The GitHub repository contains application code, reproducible preparation/evalua
 
 - [Architecture and boundaries](docs/architecture.md)
 - [Case study](docs/case-study.md)
+- [Validation evidence and browser scope](docs/validation.md)
 - [Walkthrough script](docs/walkthrough-script.md)
 - [Third-party attribution](THIRD_PARTY_NOTICES.md)
 

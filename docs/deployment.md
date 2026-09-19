@@ -2,9 +2,12 @@
 
 - [Public demo: Daibolical/inspection-desk](https://huggingface.co/spaces/Daibolical/inspection-desk)
 - [Application source: Daiyan-Khan/inspection-desk](https://github.com/Daiyan-Khan/inspection-desk)
+- [Two-minute recorded walkthrough](https://daibolical-inspection-desk.static.hf.space/walkthrough.html), published with its player in [Space commit `cbe1aa3896c6b539caac8a7ff3c86b198a7c1b06`](https://huggingface.co/spaces/Daibolical/inspection-desk/tree/cbe1aa3896c6b539caac8a7ff3c86b198a7c1b06).
 - [Initial static release snapshot](https://huggingface.co/spaces/Daibolical/inspection-desk/tree/43cbb952fea51beee295589ff0d5e94bf8d971e4): immutable Space commit `43cbb952fea51beee295589ff0d5e94bf8d971e4`, containing the built application, model weights, reference banks, public samples and frozen evidence.
 
 The Space is a public, versioned artifact repository as well as the demo host. Successful publication is separate from functional checks of inference, persistence and exports on the hosted app.
+
+The hosted ten-image DINOv2 batch, all ten saved review dispositions, refreshed results/notes, parsed JSON and CSV downloads, and cancellation followed by retry have been checked. The [validation record](validation.md) gives the exact scope and unmeasured cases. These checks used Codex's embedded Chromium 153; they do not establish standalone Chrome or Edge compatibility.
 
 ## Hugging Face Static Space
 
@@ -12,7 +15,7 @@ The Space is a public, versioned artifact repository as well as the demo host. S
 2. Run `npm run package:space`. It checks required outputs and copies the production build plus licence notices to `.publish/space/`.
 3. Use the public [Daibolical/inspection-desk Space](https://huggingface.co/spaces/Daibolical/inspection-desk), configured as **Static**. No paid compute is needed.
 4. Upload the contents of `.publish/space/`, preserving its directory structure. The packaged README declares `sdk: static` and `app_file: index.html`; it does not run a build on the host.
-5. Open the resulting Space and verify a real inference, a saved/reloaded review, the evaluation page and exports. Do not call deployment complete until these work at the public URL.
+5. Open the resulting Space and verify the real ten-image batch, saved/reloaded reviews and notes, the evaluation page, parsed JSON/CSV exports, and cancellation followed by retry. Do not call deployment complete until these work at the public URL.
 
 The production files include pinned model and reference artifacts in the public Space repository. Each result also carries its artifact version. Replace the full packaged build together when updating an experiment; never update a bank or threshold independently.
 

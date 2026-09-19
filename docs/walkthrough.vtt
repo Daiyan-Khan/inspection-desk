@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:16.000
+Inspection Desk supports human review of manufacturing photos. This demo uses public candle images; review decisions stay in this browser.
+
+2
+00:00:16.000 --> 00:00:42.000
+This batch is analysed on the device. Model files were already cached from earlier deployment checks, so this is not a cold-start measurement.
+
+3
+00:00:42.000 --> 00:01:03.000
+The overlay highlights unusual appearance. It is a review suggestion, not a defect probability or a release decision.
+
+4
+00:01:03.000 --> 00:01:19.000
+The reviewer records uncertain and adds a note. Decisions and notes are saved locally, separately from benchmark labels.
+
+5
+00:01:19.000 --> 00:01:34.000
+The same image can be reviewed with a conventional colour-and-gradient baseline. Both methods use the same frozen data split and calibration target.
+
+6
+00:01:34.000 --> 00:01:59.000
+On the held-out test, DINOv2 reached 50% recall with 7% false alerts; the classical baseline reached 0% recall with 2% false alerts. The combined success criterion was not met.
+
+7
+00:01:59.000 --> 00:02:00.000
+Review assistance only — including its mistakes.

@@ -7,7 +7,7 @@ Images and anomaly masks are from **VisA (Visual Anomaly)**, released by Amazon 
 - Source: https://github.com/amazon-science/spot-diff
 - Dataset licence: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
 - Official archive: https://amazon-visual-anomaly.s3.us-west-2.amazonaws.com/VisA_20220922.tar
-- Modifications: selected candle-category images, renamed public sample identifiers, aspect-preserving resizing and padding for canonical inference inputs. Display images and source paths are identified in the sample manifest. Human review decisions are application data, not original dataset labels.
+- Modifications: selected candle-category images, renamed public sample identifiers, aspect-preserving resizing and padding for canonical inference inputs. The review sample manifest identifies display images; the separate sample provenance record maps opaque identifiers to original source paths and hashes (`public/data/sample-provenance.json` in source, `data/sample-provenance.json` in the packaged site). Human review decisions are application data, not original dataset labels.
 
 The upstream repository's code licence is separate from the dataset licence. This application does not imply endorsement by Amazon or the dataset authors.
 
