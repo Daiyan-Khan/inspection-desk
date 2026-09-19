@@ -20,6 +20,8 @@ The project asks a measurable question: do frozen DINOv2 features outperform a c
 
 Requires Node.js 22 or 24 and Python 3.12 for data/evaluation. No paid API or inference server is used.
 
+The repository's npm configuration skips optional native CUDA downloads. The application and benchmark use WASM; no GPU installation is required.
+
 ```sh
 npm ci
 python -m venv .venv
